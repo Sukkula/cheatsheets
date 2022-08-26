@@ -19,10 +19,12 @@
     - [Symbols](#symbols)
     - [Convenience variables and functions](#convenience-variables-and-functions)
     - [Useful extensions](#useful-extensions)
+      - [Narly](#narly)
     - [.NET Debugging](#net-debugging)
   - [LINQ & Debugger Data Model](#linq--debugger-data-model)
     - [Variables](#variables)
     - [Functions](#functions)
+  - [WinDbg scripts](#windbg-scripts)
   - [WinDbg JavaScript reference](#windbg-javascript-reference)
     - [Dealing with `host.Int64`](#dealing-with-hostint64)
     - [WinDbg gallery skeleton](#windbg-gallery-skeleton)
@@ -223,6 +225,12 @@ C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print 
 | Display the current exception handler                                | `!exchain`                                                                               |                              |
 | Dump UM heap information                                             | `!heap`                                                                                  |                              |
 
+#### Narly
+| Action                    | Command     | Examples        |
+| :------------------------ | ----------- | --------------- |
+| Load extension | `.load narly`  | ``   |
+| List loaded modules and memory protections | `!nmod`  | ``   |
+
 [Back to top](#Content)
 ### .NET Debugging
 
@@ -266,6 +274,12 @@ C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print 
 | Format output data                              | `dx <LinqObject>.ToDisplayString($format)` <br>where `$format` can be <ul><li>`d` → decimal</li><li>`x` → hexadecimal</li><li>`o` → octal</li><li>`b` → binary</li><li>`s(b)` → char string</li> <li>`su(b)` → wide-char string</li></ul> | `dx @$peb->ProcessParameters->ImagePathName.Buffer.ToDisplayString("su"`                                                                                                                                                                                                                            |
 
 [Back to top](#Content)
+## WinDbg Scripts
+| Action | Command | Examples
+| :------------------------ | ----------- | --------------- |
+| Run script from file      | `$<`<br>`$<>`<br>`$$<`<br>`$$><`<br>´$$>a<` | `$><C:\myfile.txt`<br>`$$>a<C:\myfile.txt arg1 arg2` |
+| if-condition | `.if (Condition) { Commands } .elsif (Condition) { Commands } .else { Commands } ` | `.if($t0 != 5C) {}` |
+
 ## WinDbg JavaScript reference
 
 
