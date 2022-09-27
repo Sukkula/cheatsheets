@@ -154,7 +154,7 @@ C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print 
 
 | Action                        | Command                                                                                                                     | Examples                                                                                                |
 | :---------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Search                        | byte: `s [RANGE] [VALUE]`<br>dword: `s -d [RANGE] [DWORD_VALUE]`                                                            | `s @eip @eip+100 90 90 90 cc`<br>`s -d @eax l100 41424344`                                              |
+| Search                        | byte: `s [RANGE] [VALUE]`<br>dword: `s -d [RANGE] [DWORD_VALUE]`                                                            | `s @eip @eip+100 90 90 90 cc`<br>`s -d @eax l100 41424344`<br>`s -a 0x0 L?80000000 w00tw00t`                                              |
 | Search ASCII (Unicode)        | `s –a <AddrStart> L<NbByte> "Pattern"`<br> `s –a <AddrStart> <AddrEnd> "Pattern"`<br> (for Unicode – change `–a` with `–u`) |                                                                                                         |
 | Search for pattern in command | `.shell`                                                                                                                    | `.shell -ci "<windbg command>" batch command`<br>`.shell -ci "!address" findstr PAGE_EXECUTE_READWRITE` |
 
@@ -277,7 +277,7 @@ C:\> reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print 
 ## WinDbg Scripts
 | Action | Command | Examples
 | :------------------------ | ----------- | --------------- |
-| Run script from file      | `$<`<br>`$<>`<br>`$$<`<br>`$$><`<br>´$$>a<` | `$><C:\myfile.txt`<br>`$$>a<C:\myfile.txt arg1 arg2` |
+| Run script from file      | `$<`<br>`$<>`<br>`$$<`<br>`$$><`<br>`$$>a<` | `$><C:\myfile.txt`<br>`$$>a<C:\myfile.txt arg1 arg2` |
 | if-condition | `.if (Condition) { Commands } .elsif (Condition) { Commands } .else { Commands } ` | `.if($t0 != 5C) {}` |
 
 ## WinDbg JavaScript reference
